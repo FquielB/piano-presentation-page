@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Piano 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-color: #4a3b2a;
+            --parchment-bg: #f4e4bc;
+            --scroll-shadow: rgba(0, 0, 0, 0.4);
+            --roll-dark: #c7b286;
+            --roll-light: #f9f1d8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2c2c2c;
+            font-family: 'Cinzel', serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            align-items: flex-start;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .scroll-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: var(--parchment-bg);
+            padding: 60px 80px;
+            box-shadow: 0 10px 30px var(--scroll-shadow);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Texture effect */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        /* Top Roll */
+        .scroll-container::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            right: -20px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--roll-dark), var(--roll-light) 40%, var(--roll-dark));
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        /* Bottom Roll */
+        .scroll-container::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: -20px;
+            right: -20px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--roll-dark), var(--roll-light) 40%, var(--roll-dark));
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        /* Inner paper shadow for depth */
+        .scroll-content {
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem; /* Increased size */
+            margin-bottom: 50px;
+            color: #3e2b18;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-weight: 700;
+        }
+
+        .participant {
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(74, 59, 42, 0.2);
+            padding-bottom: 30px;
+        }
+
+        .participant:last-child {
+            border-bottom: none;
+        }
+
+        .participant h2 {
+            font-size: 2.2rem; /* Increased size */
+            margin-bottom: 15px;
+            color: #5c4033;
+            font-weight: 700;
+        }
+
+        .songs-list {
+            list-style: disc; /* Add bullets */
+            padding: 0 0 0 20px; /* Add padding for bullets */
+            margin: 0 auto; /* Center the list block */
+            display: inline-block; /* Allow the list to be centered by text-align: center on parent */
+            text-align: left; /* Align text to the left */
+            max-width: 90%; /* Prevent it from being too wide on small screens */
+        }
+
+        .songs-list li {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin: 8px 0;
+            color: #2a2015;
+            font-weight: 700;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .scroll-container {
+                padding: 40px 20px; /* Slightly reduced padding */
+                margin: 40px 10px;
+                width: auto;
+            }
+            
+            .scroll-container::before,
+            .scroll-container::after {
+                left: -5px;
+                right: -5px;
+            }
+
+            h1 {
+                font-size: 2.8rem; /* Slightly smaller for better fit */
+            }
+
+            .participant h2 {
+                font-size: 1.8rem;
+            }
+
+            .songs-list li {
+                font-size: 1.3rem; /* Adjusted for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <div class="scroll-content">
+            <header>
+                <h1>Presentación Piano 2025</h1>
+            </header>
+            <main id="participants-list">
+                <!-- Participants will be loaded here -->
+            </main>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Data embedded directly
+            const participantsData = [
+              {
+                "name": "Facundo Bacigalupo",
+                "songs": [
+                  "Comptine d'été No. 2 - Yann Tiersen",
+                  "He's a Pirate - Pirates of the Caribbean",
+                  "Love of my life - Queen"
+                ]
+              },
+              {
+                "name": "Facundo Bacigalupo",
+                "songs": [
+                  "The Door - Teddy Swims",
+                  "Death of a Bachelor - Panic! At the Disco"
+                ]
+              },
+            ];
+
+            const participantsList = document.getElementById('participants-list');
+
+            participantsData.forEach(participant => {
+                const participantDiv = document.createElement('div');
+                participantDiv.classList.add('participant');
+
+                const nameHeading = document.createElement('h2');
+                nameHeading.textContent = participant.name;
+                participantDiv.appendChild(nameHeading);
+
+                const songsList = document.createElement('ul');
+                songsList.classList.add('songs-list');
+
+                participant.songs.forEach(song => {
+                    const songItem = document.createElement('li');
+                    songItem.textContent = song;
+                    songsList.appendChild(songItem);
+                });
+
+                participantDiv.appendChild(songsList);
+                participantsList.appendChild(participantDiv);
+            });
+        });
+    </script>
+</body>
+</html>
