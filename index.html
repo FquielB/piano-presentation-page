@@ -96,6 +96,11 @@
             padding-bottom: 30px;
         }
 
+        .participant.no-songs {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
         .participant:last-child {
             border-bottom: none;
         }
@@ -171,6 +176,10 @@
                 "category": "Piano",
                 "owner": "Profesora: María Inés Lotes",
                 "group": [
+                    {
+                        "name": "Nos recibe: Camila Yampasi",
+                        "songs": []
+                    },
                     {
                         "name": "Darío Morra",
                         "songs": [
@@ -344,6 +353,11 @@
                 categoryItem.group.forEach(participant => {
                     const participantDiv = document.createElement('div');
                     participantDiv.classList.add('participant');
+                    
+                    const hasSongs = participant.songs && participant.songs.length > 0;
+                    if (!hasSongs) {
+                        participantDiv.classList.add('no-songs');
+                    }
 
                     const nameHeading = document.createElement('h3'); // Changed to h3 for hierarchy
                     nameHeading.textContent = participant.name;
@@ -352,16 +366,19 @@
                     nameHeading.style.marginTop = '20px';
                     participantDiv.appendChild(nameHeading);
 
-                    const songsList = document.createElement('ul');
-                    songsList.classList.add('songs-list');
+                    if (hasSongs) {
+                        const songsList = document.createElement('ul');
+                        songsList.classList.add('songs-list');
 
-                    participant.songs.forEach(song => {
-                        const songItem = document.createElement('li');
-                        songItem.textContent = song;
-                        songsList.appendChild(songItem);
-                    });
+                        participant.songs.forEach(song => {
+                            const songItem = document.createElement('li');
+                            songItem.textContent = song;
+                            songsList.appendChild(songItem);
+                        });
 
-                    participantDiv.appendChild(songsList);
+                        participantDiv.appendChild(songsList);
+                    }
+                    
                     participantsList.appendChild(participantDiv);
                 });
             });
