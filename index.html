@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación Piano 2025</title>
+    <title>Muestra anual Nelson Ferrari</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
@@ -156,7 +156,7 @@
     <div class="scroll-container">
         <div class="scroll-content">
             <header>
-                <h1>Presentación Piano 2025</h1>
+                <h1>Muestra anual Nelson Ferrari</h1>
             </header>
             <main id="participants-list">
                 <!-- Participants will be loaded here -->
@@ -168,43 +168,184 @@
             // Data embedded directly
             const participantsData = [
               {
-                "name": "Facundo Bacigalupo",
-                "songs": [
-                  "Comptine d'été No. 2 - Yann Tiersen",
-                  "He's a Pirate - Pirates of the Caribbean",
-                  "Love of my life - Queen"
+                "category": "Piano",
+                "owner": "María Inés Lotes",
+                "group": [
+                    {
+                        "name": "Darío Morra",
+                        "songs": [
+                            "Feliz cumpleaños",
+                            "Din don dan",
+                            "Estrellita",
+                            "Star war"
+                        ]
+                    },
+                    {
+                        "name": "Carmen Lotes",
+                        "songs": [
+                            "Aprendemos a cantar",
+                            "Estrellita",
+                            "La primavera"
+                        ]
+                    },
+                    {
+                        "name": "Clara Ferrari",
+                        "songs": [
+                            "Himno a la alegría",
+                            "Cuando los Santos vienen cantando",
+                            "Gravity fall"
+                        ]
+                    },
+                    {
+                        "name": "Joaquín González Gardella",
+                        "songs": [
+                            "El Padrino (tema original)",
+                            "Morning Song",
+                            "l'autre valse d'Amelie"
+                        ]
+                    },
+                    {
+                        "name": "Fernando Segura",
+                        "songs": [
+                            "Para Elisa",
+                            "Preludio N° 1 Bach",
+                            "Garganta con arena (piano y voz)"
+                        ]
+                    },
+                    {
+                        "name": "Ernesto Vázquez",
+                        "songs": [
+                            "Juego de tronos",
+                            "el lago de los cisnes",
+                            "Tema propio",
+                            "Matrimonio de amor"
+                        ]
+                    },
+                    {
+                        "name": "Nico Godoy",
+                        "songs": [
+                            "Vals del padrino",
+                            "Littleroot Town theme (Pokémon)"
+                        ]
+                    },
+                    {
+                        "name": "Facundo Bacigalupo",
+                        "songs": [
+                            "Comptine d'été No. 2",
+                            "He's a Pirate",
+                            "Love of my life"
+                        ]
+                    },
+                    {
+                        "name": "Sofía Gulisano",
+                        "songs": [
+                            "Matrimonio de amor",
+                            "Morning passages"
+                        ]
+                    }
                 ]
               },
               {
-                "name": "Facundo Bacigalupo",
-                "songs": [
-                  "The Door - Teddy Swims",
-                  "Death of a Bachelor - Panic! At the Disco"
+                "category": "Canto",
+                "owner": "Alma Macri",
+                "group": [
+                    {
+                        "name": "Thiago García",
+                        "songs": [
+                            "La bikina",
+                            "Oops!... I did it again"
+                        ]
+                    }
                 ]
               },
+              {
+                "category": "Guitarra",
+                "owner": "Franco Barboza",
+                "group": [
+                    {
+                        "name": "Ariel Ríos",
+                        "songs": [
+                            "Té para tres",
+                            "El fantasma"
+                        ]
+                    }
+                ]
+              },
+              {
+                "category": "Piano",
+                "group": [
+                    {
+                        "name": "Nico Godoy",
+                        "songs": [
+                            "L'autre valse d'Amelie",
+                            "Comptine d'ete n°3"
+                        ]
+                    },
+                    {
+                        "name": "Sofía Gulisano",
+                        "songs": [
+                            "Bohemia Rhapsody",
+                            "Le valse d' Amelie poulain"
+                        ]
+                    },
+                    {
+                        "name": "Facundo Bacigalupo",
+                        "songs": [
+                            "The Door (piano y voz)",
+                            "Death of a Bachelor (piano y voz)"
+                        ]
+                    }
+                ]
+              }
             ];
 
             const participantsList = document.getElementById('participants-list');
 
-            participantsData.forEach(participant => {
-                const participantDiv = document.createElement('div');
-                participantDiv.classList.add('participant');
+            participantsData.forEach(categoryItem => {
+                // Create Category Header
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.textContent = categoryItem.category;
+                categoryTitle.style.borderBottom = '1px solid #4a3b2a';
+                categoryTitle.style.paddingBottom = '10px';
+                categoryTitle.style.marginTop = '40px';
+                categoryTitle.style.marginBottom = '5px'; // Reduced margin
+                participantsList.appendChild(categoryTitle);
 
-                const nameHeading = document.createElement('h2');
-                nameHeading.textContent = participant.name;
-                participantDiv.appendChild(nameHeading);
+                // Create Owner Subheader
+                if (categoryItem.owner) {
+                    const ownerSubtitle = document.createElement('h4');
+                    ownerSubtitle.textContent = `Profesor: ${categoryItem.owner}`;
+                    ownerSubtitle.style.fontSize = '1.2rem';
+                    ownerSubtitle.style.color = '#5c4033';
+                    ownerSubtitle.style.marginTop = '0';
+                    ownerSubtitle.style.marginBottom = '30px';
+                    ownerSubtitle.style.fontStyle = 'italic';
+                    participantsList.appendChild(ownerSubtitle);
+                }
 
-                const songsList = document.createElement('ul');
-                songsList.classList.add('songs-list');
+                categoryItem.group.forEach(participant => {
+                    const participantDiv = document.createElement('div');
+                    participantDiv.classList.add('participant');
 
-                participant.songs.forEach(song => {
-                    const songItem = document.createElement('li');
-                    songItem.textContent = song;
-                    songsList.appendChild(songItem);
+                    const nameHeading = document.createElement('h3'); // Changed to h3 for hierarchy
+                    nameHeading.textContent = participant.name;
+                    nameHeading.style.fontSize = '1.8rem';
+                    nameHeading.style.color = '#5c4033';
+                    nameHeading.style.marginTop = '20px';
+                    participantDiv.appendChild(nameHeading);
+
+                    const songsList = document.createElement('ul');
+                    songsList.classList.add('songs-list');
+
+                    participant.songs.forEach(song => {
+                        const songItem = document.createElement('li');
+                        songItem.textContent = song;
+                        songsList.appendChild(songItem);
+                    });
+
+                    participantDiv.appendChild(songsList);
+                    participantsList.appendChild(participantDiv);
                 });
-
-                participantDiv.appendChild(songsList);
-                participantsList.appendChild(participantDiv);
             });
         });
     </script>
