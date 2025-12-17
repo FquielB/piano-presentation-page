@@ -169,7 +169,7 @@
             const participantsData = [
               {
                 "category": "Piano",
-                "owner": "María Inés Lotes",
+                "owner": "Profesora: María Inés Lotes",
                 "group": [
                     {
                         "name": "Darío Morra",
@@ -247,7 +247,7 @@
               },
               {
                 "category": "Canto",
-                "owner": "Alma Macri",
+                "owner": "Profesora: Alma Macri",
                 "group": [
                     {
                         "name": "Thiago García",
@@ -260,7 +260,7 @@
               },
               {
                 "category": "Guitarra",
-                "owner": "Franco Barboza",
+                "owner": "Profesor: Ariel Rois",
                 "group": [
                     {
                         "name": "Ariel Ríos",
@@ -273,7 +273,7 @@
               },
               {
                 "category": "Piano",
-                "owner": "María Inés Lotes",
+                "owner": "Profesora: María Inés Lotes",
                 "group": [
                     {
                         "name": "Nico Godoy",
@@ -297,8 +297,25 @@
                         ]
                     }
                 ]
-              }
-            ];
+              },
+              {
+                "category": "Dibujo y pintura",
+                "owner": "Profesora: Candela Herrera",
+                "group": [
+                    {
+                        "name": "Exponen",
+                        "songs": [
+                            "Darío Morra",
+                            "Wilma Emde",
+                            "Ricardo Ponzio",
+                            "Franco Barboza",
+                            "Sofía Coves",
+                            "Facundo Coves",
+                            "Pablo Coves"
+                        ]
+                    }
+                ]
+            }];
 
             const participantsList = document.getElementById('participants-list');
 
@@ -315,7 +332,7 @@
                 // Create Owner Subheader
                 if (categoryItem.owner) {
                     const ownerSubtitle = document.createElement('h4');
-                    ownerSubtitle.textContent = `Profesor: ${categoryItem.owner}`;
+                    ownerSubtitle.textContent = `${categoryItem.owner}`;
                     ownerSubtitle.style.fontSize = '1.2rem';
                     ownerSubtitle.style.color = '#5c4033';
                     ownerSubtitle.style.marginTop = '0';
